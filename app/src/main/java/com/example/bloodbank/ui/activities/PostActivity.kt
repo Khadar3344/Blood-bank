@@ -10,11 +10,7 @@ import com.example.bloodbank.R
 import com.example.bloodbank.databinding.ActivityPostBinding
 import com.example.bloodbank.firestore.FireStoreClass
 import com.example.bloodbank.models.CustomUser
-import com.example.bloodbank.models.User
 import com.example.bloodbank.utils.Constants
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_post.*
 import java.util.*
 
@@ -35,7 +31,7 @@ class PostActivity : BaseActivity() {
         val arrayBlood = ArrayAdapter(this, R.layout.blood_group_item, bloodGroup)
         binding.autoCompleteTextViewPostBloodGroup.setAdapter(arrayBlood)
 
-        val state = resources.getStringArray(R.array.state_list)
+        val state = resources.getStringArray(R.array.regions_list)
         val arrayState = ArrayAdapter(this, R.layout.state_item, state)
         binding.autoCompleteTextViewPostState.setAdapter(arrayState)
 

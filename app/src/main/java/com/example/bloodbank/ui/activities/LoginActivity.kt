@@ -146,7 +146,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                     startActivity(Intent(this@LoginActivity, AdminMainActivity::class.java))
                     Toast.makeText(
                         this@LoginActivity,
-                        "تم تسجيل دخول المدير بنجاح",
+                        "Login Admin successfully",
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {

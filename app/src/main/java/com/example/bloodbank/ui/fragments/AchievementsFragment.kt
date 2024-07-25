@@ -13,7 +13,6 @@ import com.example.bloodbank.databinding.FragmentAchievementsBinding
 import com.example.bloodbank.firestore.FireStoreClass
 import com.example.bloodbank.models.Donor
 import com.example.bloodbank.models.User
-import com.example.bloodbank.ui.activities.LoginActivity
 import com.example.bloodbank.ui.activities.MainActivity
 import com.example.bloodbank.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -59,7 +58,7 @@ class AchievementsFragment : BaseFragment() {
 
         showProgressDialog(resources.getString(R.string.please_wait))
         bloodGroup = resources.getStringArray(R.array.Blood_Group)
-        state = resources.getStringArray(R.array.state_list)
+        state = resources.getStringArray(R.array.regions_list)
 
 
         mAuth = FirebaseAuth.getInstance()
@@ -80,7 +79,7 @@ class AchievementsFragment : BaseFragment() {
                         .addOnSuccessListener { dataSnapshot ->
                             if (dataSnapshot.exists()) {
                                 mDonor = dataSnapshot.toObject(Donor::class.java)!!
-                                binding.totalDonated.text = "${mDonor.totalDonate}  مرة"
+                                binding.totalDonated.text = "${mDonor.totalDonate} times"
                                 if (mDonor.totalDonate == 0) {
                                     lastData = "01/01/2010"
                                     binding.lastDonated.text = resources.getString(R.string.do_not_donate_yet)
@@ -157,7 +156,7 @@ class AchievementsFragment : BaseFragment() {
                                             btnYesAchievement.visibility = View.GONE
                                             btnNoAchievement.visibility = View.GONE
                                             nextDonate.visibility = View.VISIBLE
-                                            nextDonate.text = "${(120 - totday)}  يوم"
+                                            nextDonate.text = "${(120 - totday)} day"
                                         }
                                     }
                                 }

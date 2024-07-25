@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.view.MenuItem
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.ArrayAdapter
@@ -15,7 +14,6 @@ import com.example.bloodbank.databinding.ActivityUserProfileBinding
 import com.example.bloodbank.firestore.FireStoreClass
 import com.example.bloodbank.models.Donor
 import com.example.bloodbank.models.User
-import com.example.bloodbank.ui.fragments.HomeFragment
 import com.example.bloodbank.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -43,7 +41,7 @@ class UserProfileActivity : BaseActivity() {
         val arrayBlood = ArrayAdapter(this, R.layout.blood_group_item, bloodGroup)
         binding.autoCompleteTextViewBloodGroupProfile.setAdapter(arrayBlood)
 
-        val state = resources.getStringArray(R.array.state_list)
+        val state = resources.getStringArray(R.array.regions_list)
         val arrayState = ArrayAdapter(this, R.layout.state_item, state)
         binding.autoCompleteTextViewStateProfile.setAdapter(arrayState)
 

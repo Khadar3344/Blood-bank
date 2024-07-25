@@ -39,7 +39,7 @@ class SearchDonorFragment : BaseFragment()  {
             val arrayBlood = ArrayAdapter(requireContext(), R.layout.blood_group_item, bloodGroup)
             binding.autoCompleteTextViewGetBloodGroup.setAdapter(arrayBlood)
 
-            val state = resources.getStringArray(R.array.state_list)
+            val state = resources.getStringArray(R.array.regions_list)
             val arrayState = ArrayAdapter(requireContext(), R.layout.state_item, state)
             binding.autoCompleteTextViewGetState.setAdapter(arrayState)
 
@@ -77,7 +77,7 @@ class SearchDonorFragment : BaseFragment()  {
                     adapterSearchDonor.notifyDataSetChanged()
             } else { 
                     showDonorList.visibility = View.GONE
-                    Toast.makeText(requireContext(), "لا يوجد", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Nothing", Toast.LENGTH_SHORT).show()
             }
         }
     }

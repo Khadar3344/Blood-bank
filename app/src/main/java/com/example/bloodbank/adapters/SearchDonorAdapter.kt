@@ -58,12 +58,12 @@ class SearchDonorAdapter(
             }
 
             shareDonor.setOnClickListener {
-                val shareText = "تطبيق بنك الدم: " +
-                        "\nإسم المتبرع: ${donor.fullName}" +
-                        "\nرقم الإتصال: ${donor.mobile}" +
-                        "\nالموقع: ${donor.address},${donor.state}" +
-                        "\nمجموع التبرعات: ${donor.totalDonate}" +
-                        "\nآخر تبرع: ${donor.lastDonate}"
+                val shareText = "Blood Bank App : " +
+                        "\nDonor name ${donor.fullName}" +
+                        "\nPhone number: ${donor.mobile}" +
+                        "\nLocation: ${donor.address},${donor.state}" +
+                        "\nTotal Donation: ${donor.totalDonate}" +
+                        "\nLast Donation: ${donor.lastDonate}"
 
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.type = "text/plain"

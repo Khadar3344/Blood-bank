@@ -42,7 +42,7 @@ class FireStoreClass {
             .document(donorInfo.id)
             .set(donorInfo, SetOptions.merge())
             .addOnSuccessListener {
-                when(activity) {
+                when (activity) {
                     is RegisterActivity -> {
                         activity.donorRegistrationSuccess()
                     }
@@ -54,7 +54,7 @@ class FireStoreClass {
 
             }
             .addOnFailureListener { e ->
-                when(activity) {
+                when (activity) {
                     is RegisterActivity -> {
                         activity.hideProgressDialog()
                     }
@@ -84,61 +84,10 @@ class FireStoreClass {
         return currentUserID
     }
 
-    /*fun getAdminDetails(activity: Activity) {
-        // Here we pass the collection name from which we wants the data.
-        mFireStore.collection(Constants.ADMIN)
-            // The documents id to get the Fields of user.
-            .document(getCurrentUserID())
-            .get()
-            .addOnSuccessListener { document ->
-                Log.i(activity.javaClass.simpleName, document.toString())
-
-                // Here we have received the documents snapshot which is converted into the User Data model object.
-                val admin = document.toObject(Admin::class.java)!!
-
-                val sharedPreferences =
-                    activity.getSharedPreferences(
-                        Constants.BLOODBANK_PREFERENCES,
-                        Context.MODE_PRIVATE
-                    )
-
-                val editor = sharedPreferences.edit()
-                editor.putString(
-                    // Key: Value example logged_in_username: fullname
-                    Constants.LOGGED_IN_USERNAME,
-                    admin.name
-                )
-
-                editor.apply()
-
-                when (activity) {
-                    is LoginActivity -> {
-                        // Call a function of base activity for transferring the result to it.
-                        activity.adminLoggedInSuccess(admin)
-                    }
-                }
-            }
-
-            .addOnFailureListener { e ->
-                // Hide the progress dialog if there is any error. And print error in log.
-                when (activity) {
-                    is LoginActivity -> {
-                        activity.hideProgressDialog()
-                    }
-                }
-
-                Log.e(
-                    activity.javaClass.simpleName,
-                    "Error while getting user details",
-                    e
-                )
-            }
-    }*/
-
     fun getUserDetails(activity: Activity) {
         // Here we pass the collection name from which we wants the data.
         mFireStore.collection(Constants.USERS)
-        // The documents id to get the Fields of user.
+            // The documents id to get the Fields of user.
             .document(getCurrentUserID())
             .get()
             .addOnSuccessListener { document ->
@@ -198,7 +147,8 @@ class FireStoreClass {
 
                 Log.e(
                     activity.javaClass.simpleName,
-                "Error while posting blood request.")
+                    "Error while posting blood request."
+                )
             }
     }
 
@@ -289,7 +239,7 @@ class FireStoreClass {
             .document(getCurrentUserID())
             .delete()
             .addOnSuccessListener {
-                when(activity) {
+                when (activity) {
 
                     is UserProfileActivity -> {
                         activity.userProfileUpdateSuccess()
@@ -327,7 +277,10 @@ class FireStoreClass {
 
     fun getSearchDonorList(fragment: SearchDonorFragment) {
         mFireStore.collection(Constants.DONORS)
-            .whereEqualTo(Constants.BLOOD_GROUP,fragment.autoCompleteTextView_get_blood_group.text.toString())
+            .whereEqualTo(
+                Constants.BLOOD_GROUP,
+                fragment.autoCompleteTextView_get_blood_group.text.toString()
+            )
             .whereEqualTo(Constants.STATE, fragment.autoCompleteTextView_get_state.text.toString())
             .addSnapshotListener { value, error ->
                 if (error != null) {

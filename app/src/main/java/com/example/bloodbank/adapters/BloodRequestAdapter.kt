@@ -61,17 +61,17 @@ import com.example.bloodbank.ui.fragments.HomeFragment
 
 
         holder.binding.share.setOnClickListener {
-            val shareText = "تطبيق بنك الدم: " +
-                    "\nمطلوب ل: ${customUser.name}" +
-                    "\nالموقع: ${customUser.address},${customUser.state}" +
-                    "\nرقم الإتصال: ${customUser.phone}" +
-                    "\nفصيلة الدم: ${customUser.bloodGroup}"
+            val shareText = "Blood Bank App :" +
+                    "\nNeeded for: ${customUser.name}" +
+                    "\nLocation: ${customUser.address},${customUser.state}" +
+                    "\nPhone Number ${customUser.phone}" +
+                    "\nBlood Group: ${customUser.bloodGroup}"
 
             val shareIntent = Intent(Intent.ACTION_SEND)
             shareIntent.type = "text/plain"
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareText)
 
-            context.startActivity(Intent.createChooser(shareIntent,"مشاركة على: "))
+            context.startActivity(Intent.createChooser(shareIntent,"Share to: "))
         }
     }
 

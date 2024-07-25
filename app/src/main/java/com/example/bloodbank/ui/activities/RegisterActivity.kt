@@ -12,7 +12,6 @@ import com.example.bloodbank.databinding.ActivityRegisterBinding
 import com.example.bloodbank.firestore.FireStoreClass
 import com.example.bloodbank.models.Donor
 import com.example.bloodbank.models.User
-import com.example.bloodbank.utils.Constants
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -34,7 +33,7 @@ import kotlinx.android.synthetic.main.request_list_item.*
         val arrayBlood = ArrayAdapter(this, R.layout.blood_group_item, bloodGroup)
         binding.autoCompleteTextViewBloodGroup.setAdapter(arrayBlood)
 
-        val state = resources.getStringArray(R.array.state_list)
+        val state = resources.getStringArray(R.array.regions_list)
         val arrayState = ArrayAdapter(this, R.layout.state_item, state)
         binding.autoCompleteTextViewState.setAdapter(arrayState)
 
@@ -91,7 +90,7 @@ import kotlinx.android.synthetic.main.request_list_item.*
 
             binding.etPhone.text.toString().trim{ it <= ' '}.length < 10 -> {
                 showErrorSnackBar(
-                    "رقم الهاتف يجب أن يكون أكبر من 10",
+                    "Phone Number Must be greater than 10",
                     true)
                 false
             }
@@ -113,7 +112,7 @@ import kotlinx.android.synthetic.main.request_list_item.*
 
             binding.etPassword.text.toString().trim{ it <= ' '}.length < 5 -> {
                 showErrorSnackBar(
-                    "كلمة المرور يجب أن تكون أكبر من 5",
+                    "Password must be greater thab 5",
                     true)
                 false
             }
